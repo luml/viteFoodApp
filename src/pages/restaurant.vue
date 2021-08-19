@@ -1,0 +1,59 @@
+<template>
+  <main class="container restaurant">
+    <div class="restaurantheading">
+      <h1>Restaurants</h1>
+      <AppSelect @change="selectedResaurant = $event" />
+      <!-- <pre>{{ selectedResaurant }}</pre> -->
+    </div>
+    <AppRestaurantInfo :datasource="filteredRestaurants"/>
+  </main>
+</template>
+
+<script>
+import { defineComponent } from 'vue';
+import AppRestaurantInfo from '../components/AppRestaurantInfo.vue';
+import AppSelect from '../components/AppSelect.vue';
+import { mapState } from 'vuex';
+
+export default defineComponent({
+  components: {
+    AppRestaurantInfo,
+    AppSelect
+  },
+  data() {
+    return {
+      selectedResaurant: '',
+    }
+  },
+  computed: {
+    // ...mapState([
+    //   'fooddata',
+    // ]),
+    filteredRestaurants() {
+      console.log(111, this.fooddata);
+      if (this.selectedResaurant) {
+        return this.fooddata.filter(el => {
+          let name = el.name.toLowerCase()
+          return name.includes(this.selectedResaurant)
+        })
+      }
+      return this.fooddata
+    }
+  },
+  setup() {
+    const fooddata = await store.dispatch('getFoodData')
+    const filteredRestaurants: () => ({
+      if (this.selectedResaurant) {
+        return fooddata.filter(el => {
+          let name = el.name.toLowerCase()
+          return name.includes(this.selectedResaurant)
+        })
+      }
+      return fooddata
+    })
+    return {
+      filteredRestaurants
+    }
+  },
+)};
+</script>
