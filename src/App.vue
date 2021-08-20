@@ -1,5 +1,6 @@
 <template>
   <main class="container">
+    <!-- TODO need to put you big head away from here -->
     <AppHeader />
   </main>
 </template>
@@ -12,6 +13,7 @@ export default defineComponent({
     AppHeader,
   },
   async created() {
+    // TODO is there a pre-request plugin something can handle this, seems weird to be here
     await this.$store.dispatch('getFoodData')
   },
 });

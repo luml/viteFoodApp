@@ -25,6 +25,7 @@
               <button class="ghost">View Item ></button>
             </a> -->
             <router-link :to="'/views/' +`${menuitem.id}`">View Item ></router-link>
+            <router-view></router-view>
           </div>
         </div>
       </div>

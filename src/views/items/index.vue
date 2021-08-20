@@ -27,7 +27,7 @@
             name="option"
             :id="option"
             :value="option"
-            v-model="$v.itemOptions.$model" />
+            v-model="itemOptions.$model" />
           <label :for="option">{{ option }}</label>
         </div>
       </fieldset>
@@ -43,7 +43,7 @@
             type="checkbox"
             name="addon"
             :id="addon"
-            :value="addon" v-model="$v.itemAddons.$model" />
+            :value="addon" v-model="itemAddons.$model" />
           <label :for="addon">{{ addon }}</label>
         </div>
       </fieldset>
@@ -54,7 +54,7 @@
       <app-toast v-if="cartSubmitted">
         Order submitted
         <br />Check out more
-        <nuxt-link to="/restaurant">restaurants</nuxt-link>
+        <router-link to="/restaurant">restaurants</router-link>
       </app-toast>
     </section>
 
@@ -76,7 +76,7 @@ export default {
     return {
       id: this.$route.params.id,
       count: 1,
-      itemOptions: "",
+      itemOptions: "", // where are you from ?
       itemAddons: [],
       itemSizeAndCost: [],
       cartSubmitted: false,
@@ -104,29 +104,30 @@ export default {
   },
   methods: {
     addToCard() {
-      let formOutput = {
-        item: this.currentItem.item,
-        count: this.count,
-        options: this.itemOptions,
-        addOns: this.itemAddons,
-        combinedPrice: this.combinedPrice
-      };
-      let addOnError = this.$v.itemAddons.$invalid
-      let optionError = this.currentItem.options ? this.$v.itemOptions.$invalid : false
+      // Can't manage all of you guys at the moment
+      // let formOutput = {
+      //   item: this.currentItem.item,
+      //   count: this.count,
+      //   options: this.itemOptions,
+      //   addOns: this.itemAddons,
+      //   combinedPrice: this.combinedPrice
+      // };
+      // let addOnError = this.$v.itemAddons.$invalid
+      // let optionError = this.currentItem.options ? this.$v.itemOptions.$invalid : false
 
-      if (addOnError || optionError) {
-        this.errors = true
-        if (addOnError) {
-          this.$v.itemAddons.$touch()
-        } else {
-          this.$v.itemOptions.$touch()
-        }
-        this.$v.itemAddons.$touch()
-      } else {
-        this.errors = false
-        this.cartSubmitted = true
-        this.$store.commit("addToCart", formOutput)
-      }
+      // if (addOnError || optionError) {
+      //   this.errors = true
+      //   if (addOnError) {
+      //     this.$v.itemAddons.$touch()
+      //   } else {
+      //     this.$v.itemOptions.$touch()
+      //   }
+      //   this.$v.itemAddons.$touch()
+      // } else {
+      //   this.errors = false
+      //   this.cartSubmitted = true
+      //   this.$store.commit("addToCart", formOutput)
+      // }
     }
   }
 };

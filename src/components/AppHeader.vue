@@ -2,6 +2,7 @@
   <section class="masthead" role="img" aria-label="Image Description">
     <h1>Vite Food App</h1>
     <router-link to="/restaurant">Find a restaurant</router-link>
+    <router-view></router-view>
   </section>
 </template>
 
