@@ -3,7 +3,7 @@
     <div class="restaurantheading">
       <h1>Restaurants</h1>
       <AppSelect @change="selectedResaurant = $event" />
-      <!-- <pre>{{ selectedResaurant }}</pre> -->
+      <pre>{{ selectedResaurant }}</pre>
     </div>
     <AppRestaurantInfo :datasource="filteredRestaurants"/>
   </main>
@@ -26,11 +26,10 @@ export default defineComponent({
     }
   },
   computed: {
-    // ...mapState([
-    //   'fooddata',
-    // ]),
+    ...mapState([
+      'fooddata',
+    ]),
     filteredRestaurants() {
-      console.log(111, this.fooddata);
       if (this.selectedResaurant) {
         return this.fooddata.filter(el => {
           let name = el.name.toLowerCase()
@@ -40,20 +39,5 @@ export default defineComponent({
       return this.fooddata
     }
   },
-  setup() {
-    const fooddata = await store.dispatch('getFoodData')
-    const filteredRestaurants: () => ({
-      if (this.selectedResaurant) {
-        return fooddata.filter(el => {
-          let name = el.name.toLowerCase()
-          return name.includes(this.selectedResaurant)
-        })
-      }
-      return fooddata
-    })
-    return {
-      filteredRestaurants
-    }
-  },
-)};
+});
 </script>

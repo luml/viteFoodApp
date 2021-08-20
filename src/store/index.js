@@ -1,5 +1,3 @@
-// import { createApp } from 'vue';
-// import { createStore } from 'vuex';
 import Vuex from 'vuex';
 import { v4 as uuidv4 } from 'uuid';
 

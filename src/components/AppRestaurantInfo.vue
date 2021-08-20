@@ -13,16 +13,18 @@
           v-for="menuitem in store.menu"
           :key="menuitem.id"
           class="items"
-          :style="`background: url(../assets/${menuitem.img}) no-repeat center center`"
+          :style="`background: url(${egg}) no-repeat center center`"
         >
           <div class="iteminfo">
+            <!-- <img :src="egg" alt="food image"> -->
             <div>
               <h4>{{ menuitem.item }}</h4>
               <p>{{ priceFormatting(menuitem.price) }}</p>
             </div>
-            <a :href="`/items/${menuitem.id}`">
+            <!-- <a :href="`/items/${menuitem.id}`">
               <button class="ghost">View Item ></button>
-            </a>
+            </a> -->
+            <router-link :to="'/views/' +`${menuitem.id}`">View Item ></router-link>
           </div>
         </div>
       </div>
@@ -32,12 +34,16 @@
 
 <script>
 import { defineComponent } from 'vue';
+import egg from '../assets/dimsum-eggplant.jpg';
 export default defineComponent({
   props: {
     datasource: {
       type: [Array, Object],
     },
   },
+  data: () => ({
+    egg,
+  }),
   methods: {
     priceFormatting(item) {
       return "$" + item.toFixed(2)
@@ -45,7 +51,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss" scoped>
-
-</style>

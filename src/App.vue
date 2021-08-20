@@ -1,24 +1,15 @@
 <template>
   <main class="container">
-    <!-- <AppHeader /> -->
-    <AppRestaurantInfo :datasource="fooddata"/>
+    <AppHeader />
   </main>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-// import AppHeader from './components/AppHeader.vue';
-import AppRestaurantInfo from './components/AppRestaurantInfo.vue';
-import { mapState } from 'vuex';
+import AppHeader from './components/AppHeader.vue';
 export default defineComponent({
   components: {
-    // AppHeader,
-    AppRestaurantInfo,
-  },
-  computed: {
-    ...mapState([
-      'fooddata',
-    ])
+    AppHeader,
   },
   async created() {
     await this.$store.dispatch('getFoodData')

@@ -1,9 +1,7 @@
 <template>
   <section class="masthead" role="img" aria-label="Image Description">
-    <h1>Nuxt Food App</h1>
-    <a href="/restaurant">
-      <button>Find a restaurant</button>
-    </a>
+    <h1>Vite Food App</h1>
+    <router-link to="/restaurant">Find a restaurant</router-link>
   </section>
 </template>
 
