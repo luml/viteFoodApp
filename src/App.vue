@@ -1,21 +1,19 @@
 <template>
-  <main class="container">
-    <!-- TODO need to put you big head away from here -->
-    <AppHeader />
+  <main id="nav">
+    <router-link :to="{ name: 'Home' }">Home</router-link>
+    <router-link :to="{ name: 'Restaurant' }">Restaurant</router-link>|
   </main>
+  <router-view />
 </template>
 
 <script>
-import { defineComponent } from 'vue';
-import AppHeader from './components/AppHeader.vue';
+import { defineComponent } from "vue";
 export default defineComponent({
-  components: {
-    AppHeader,
-  },
+  name: "App",
   async created() {
     // TODO is there a pre-request plugin something can handle this, seems weird to be here
-    await this.$store.dispatch('getFoodData')
-  },
+    await this.$store.dispatch("getFoodData");
+  }
 });
 </script>
 

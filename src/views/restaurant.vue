@@ -2,7 +2,7 @@
   <main class="container restaurant">
     <div class="restaurantheading">
       <h1>Restaurants</h1>
-      <AppSelect @change="selectedResaurant = $event" />
+      <AppSelect @change="handleselectedResaurant" />
       <pre>{{ selectedResaurant }}</pre>
     </div>
     <AppRestaurantInfo :datasource="filteredRestaurants"/>
@@ -16,6 +16,7 @@ import AppSelect from '../components/AppSelect.vue';
 import { mapState } from 'vuex';
 
 export default defineComponent({
+  name: 'Restaurant',
   components: {
     AppRestaurantInfo,
     AppSelect
@@ -39,5 +40,12 @@ export default defineComponent({
       return this.fooddata
     }
   },
+  methods: {
+    handleselectedResaurant(data) {
+      if (data && data.option) {
+        this.selectedResaurant = data.option;
+      }
+    }
+  }
 });
 </script>

@@ -68,9 +68,16 @@ import AppToast from "../../components/AppToast.vue";
 import RestaurantDetail from '../../components/RestaurantDetail.vue';
 
 export default {
+  name: 'Order',
   components: {
     AppToast,
     RestaurantDetail,
+  },
+  props: {
+    // id: {
+    //   type: String,
+    //   require: true
+    // }
   },
   data() {
     return {
@@ -86,6 +93,7 @@ export default {
   computed: {
     ...mapState(["fooddata"]),
     currentItem() {
+      console.log('❤️‍🩹', this.id, this.fooddata)
       let result;
       for (let i = 0; i < this.fooddata.length; i++) {
         for (let j = 0; j < this.fooddata[i].menu.length; j++) {
