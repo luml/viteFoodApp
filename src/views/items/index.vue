@@ -167,4 +167,17 @@ export default {
 .options {
   grid-area: 2 / 1 / 3 / 2;
 }
+input[type="number"] {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.quantity {
+  display: flex;
+  margin: 20px 0 40px;
+}
+fieldset {
+  margin: 20px 0;
+  border: 1px solid #ddd;
+}
 </style>

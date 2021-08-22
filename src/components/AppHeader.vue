@@ -1,21 +1,23 @@
 <template>
-  <section class="masthead" role="img" aria-label="Image Description">
-    <h1>Vite Food App</h1>
+  <section
+    class="masthead"
+    role="img"
+    aria-label="Image Description"
+  >
+    <h1 class="animate__animated animate__bounce">Vite Food App</h1>
     <router-link to="/restaurant">Find a restaurant</router-link>
     <router-view></router-view>
   </section>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 export default defineComponent({
-  
 });
 </script>
 
 <style lang="scss" scoped>
 .masthead {
-  width: 100%;
   height: 80vh;
   padding: 40px;
   margin-bottom: 60px;

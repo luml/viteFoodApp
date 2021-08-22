@@ -1,31 +1,53 @@
 <template>
   <nav>
     <ul>
-      <li><a to="/"><AppLogo /></a></li>
-      <li><a to="/restaurant">Restaurants</a></li>
+      <router-link :to="{ name: 'Home' }"><AppLogo /></router-link>
+      <router-link :to="{ name: 'Restaurant' }">Restaurant</router-link>
     </ul>
-    <div class="smallnum" v-if="cartCount > 0">{{cartCount}}</div>
-    <a href="/cart">Cart</nuxt-link>
+    <div class="smallnum" v-if="cartCount > 0">{{ cartCount }}</div>
+    <router-link :to="{ name: 'Cart' }">Cart</router-link>
   </nav>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
-import AppLogo from '@/components/AppLogo.vue';
-import { mapGetters } from 'vuex';
+import { defineComponent } from "vue";
+import AppLogo from "./AppLogo.vue";
+import { mapGetters } from "vuex";
 
 export default defineComponent({
   components: {
     AppLogo,
   },
   computed: {
-    ...mapGetters([
-      'cartCount',
-    ])
+    ...mapGetters(["cartCount"]),
   },
 });
 </script>
 
 <style lang="scss" scoped>
+nav {
+  padding: 5px 60px;
+  background: #082c40;
+  color: white;
+  position: relative;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+
+    >*{
+      padding-right: 40px;
+    }
+  }
+}
 </style>
