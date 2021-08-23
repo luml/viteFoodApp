@@ -2,7 +2,7 @@
   <main class="container">
     <section
         class="image"
-        :style="`background: url('../../assets/${currentItem.img}') no-repeat center center`">
+        :style="`background: url(../../../src/assets/${currentItem.img}) no-repeat center center`">
     </section>
 
     <section class="details">
@@ -90,6 +90,9 @@ export default {
       errors: false,
     };
   },
+  created() {
+    // this.getImageUrl('dimsum-shrimp.jpg')
+  },
   computed: {
     ...mapState(["fooddata"]),
     currentItem() {
@@ -111,6 +114,9 @@ export default {
     }
   },
   methods: {
+    // getImageUrl(name) {
+    //   return new URL('../../assets/' + name, import.meta.url).href
+    // },
     addToCard() {
       let formOutput = {
         item: this.currentItem.item,
