@@ -55,8 +55,8 @@ nav {
     border-radius: 50%;
     background: white;
     color: black;
-    top: 28px;
-    right: 32px;
+    top: 17px;
+    right: 30px;
     width: 15px;
     display: flex;
     text-align: center;

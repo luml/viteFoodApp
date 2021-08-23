@@ -13,7 +13,7 @@
         <input type="number" min="1" v-model="count" />
         <button
           class="primary"
-          :disabled="errors === true"
+          :disabled="itemAddons.length < 2 || itemOptions === ''"
           @click="addToCard">Add to cart - ${{combinedPrice}}</button>
       </div>
 
@@ -32,7 +32,7 @@
         </div>
       </fieldset>
 
-      <div class="error">Options is required</div>
+      <div class="error" v-if="currentItem.options && currentItem.options.length > 0">Options is required</div>
 
       <fieldset v-if="currentItem.addOns">
         <legend>
@@ -48,8 +48,8 @@
         </div>
       </fieldset>
 
-      <div class="error">Addons is required</div>
-      <div class="error">Two addons at least</div>
+      <div class="error" v-if="itemAddons.length < 2">Addons is required</div>
+      <div class="error" v-if="itemAddons.length < 2">Two addons at least</div>
 
       <app-toast v-if="cartSubmitted">
         Order submitted
@@ -73,21 +73,15 @@ export default {
     AppToast,
     RestaurantDetail,
   },
-  props: {
-    // id: {
-    //   type: String,
-    //   require: true
-    // }
-  },
   data() {
     return {
       id: this.$route.params.id,
       count: 1,
-      itemOptions: "",
+      itemOptions: null,
       itemAddons: [],
       itemSizeAndCost: [],
       cartSubmitted: false,
-      errors: false,
+      // errors: false,
     };
   },
   created() {
@@ -106,6 +100,7 @@ export default {
           }
         }
       }
+      if (result.options && result.options.length > 0) this.itemOptions = ""
       return result;
     },
     combinedPrice() {
@@ -125,22 +120,8 @@ export default {
         addOns: this.itemAddons,
         combinedPrice: this.combinedPrice
       };
-      let addOnError = this.itemAddons.length === 0;
-      let optionError = this.currentItem.options ? this.itemOptions !== "" : false;
-      console.log(3333, addOnError, optionError);
-      if (addOnError || optionError) {
-        this.errors = true
-        // if (addOnError) {
-        //   this.itemAddons.$touch()
-        // } else {
-        //   this.itemOptions.$touch()
-        // }
-        // this.itemAddons.$touch()
-      } else {
-        this.errors = false
-        this.cartSubmitted = true
-        this.$store.commit("addToCart", formOutput)
-      }
+      this.cartSubmitted = true
+      this.$store.commit("addToCart", formOutput)
     }
   }
 };
@@ -180,6 +161,12 @@ input[type="number"] {
 .quantity {
   display: flex;
   margin: 20px 0 40px;
+
+  button:disabled {
+    background: gray;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
 }
 fieldset {
   margin: 20px 0;
