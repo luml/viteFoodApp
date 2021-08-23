@@ -49,3 +49,22 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.restaurant {
+  .restaurantheading {
+    margin: 50px 0 20px 200px;
+    display: flex;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 30px;
+    margin-right: 40px;
+  }
+
+  .filter {
+    padding-right: 200px;
+  }
+}
+</style>

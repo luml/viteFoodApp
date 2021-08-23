@@ -5,7 +5,7 @@
     aria-label="Image Description"
   >
     <h1 class="animate__animated animate__bounce">Vite Food App</h1>
-    <router-link to="/restaurant">Find a restaurant</router-link>
+    <button @click="eatOut">Find a restaurant</button>
     <router-view></router-view>
   </section>
 </template>
@@ -13,6 +13,11 @@
 <script>
 import { defineComponent } from "vue";
 export default defineComponent({
+  methods: {
+    eatOut() {
+      this.$router.push('/restaurant')
+    }
+  }
 });
 </script>
 

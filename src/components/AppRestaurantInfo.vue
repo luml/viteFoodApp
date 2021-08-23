@@ -20,9 +20,7 @@
               <h4>{{ menuitem.item }}</h4>
               <p>{{ priceFormatting(menuitem.price) }}</p>
             </div>
-            <router-link
-              class="view"
-              :to="{ name: 'Order', params: { id: menuitem.id } }"
+            <router-link class="view" :to="{ name: 'Order', params: { id: menuitem.id } }"
               >View Item ></router-link
             >
             <router-view></router-view>
@@ -53,22 +51,18 @@ export default defineComponent({
 section.restaurantinfo {
   padding: 20px 200px;
 
-  .items {
-    height: 250px;
-    border-radius: 5px;
-    background-size: cover;
-    position: relative;
-    box-shadow: 2px 6px 6px 0 rgb(215, 215, 215);
-  }
+  .label {
+    margin: 15px 0;
+    line-height: 1.6;
 
-  .iteminfo {
-    background: white;
-    width: 100%;
-    padding: 15px;
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    justify-content: space-between;
+    span {
+      font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 1000px;
+      background: #d50813;
+      color: white;
+      font-weight: bold;
+    }
   }
 
   .row {
@@ -80,14 +74,32 @@ section.restaurantinfo {
     grid-column-gap: 30px;
     grid-row-gap: 0px;
 
-    .view {
-      height: 20px;
-      border-radius: 0.1rem;
-      font-size: 0.9rem;
-      padding: 0.5rem 1rem;
+    .items {
+      height: 250px;
+      border-radius: 5px;
+      background-size: cover;
+      position: relative;
+      box-shadow: 2px 6px 6px 0 rgb(215, 215, 215);
+    }
+
+    .iteminfo {
       background: white;
-      border: 1px solid #555;
-      color: black;
+      width: 100%;
+      padding: 15px;
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      justify-content: space-between;
+
+      .view {
+        height: 20px;
+        border-radius: 0.1rem;
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+        background: white;
+        border: 1px solid #555;
+        color: black;
+      }
     }
   }
 }

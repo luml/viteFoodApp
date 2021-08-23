@@ -33,6 +33,7 @@ nav {
   align-items: center;
   display: flex;
   justify-content: space-between;
+  height: 50px;
 
   a {
     color: white;
