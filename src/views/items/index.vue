@@ -2,7 +2,7 @@
   <main class="container">
     <section
         class="image"
-        :style="`background: url(/${currentItem.img}) no-repeat center center`">
+        :style="`background: url('../../assets/${currentItem.img}') no-repeat center center`">
     </section>
 
     <section class="details">
@@ -27,7 +27,7 @@
             name="option"
             :id="option"
             :value="option"
-            v-model="itemOptions.$model" />
+            v-model="itemOptions" />
           <label :for="option">{{ option }}</label>
         </div>
       </fieldset>
@@ -43,7 +43,7 @@
             type="checkbox"
             name="addon"
             :id="addon"
-            :value="addon" v-model="itemAddons.$model" />
+            :value="addon" v-model="itemAddons" />
           <label :for="addon">{{ addon }}</label>
         </div>
       </fieldset>
@@ -83,7 +83,7 @@ export default {
     return {
       id: this.$route.params.id,
       count: 1,
-      itemOptions: "", // where are you from ?
+      itemOptions: "",
       itemAddons: [],
       itemSizeAndCost: [],
       cartSubmitted: false,
@@ -112,30 +112,29 @@ export default {
   },
   methods: {
     addToCard() {
-      // Can't manage all of you guys at the moment
-      // let formOutput = {
-      //   item: this.currentItem.item,
-      //   count: this.count,
-      //   options: this.itemOptions,
-      //   addOns: this.itemAddons,
-      //   combinedPrice: this.combinedPrice
-      // };
-      // let addOnError = this.$v.itemAddons.$invalid
-      // let optionError = this.currentItem.options ? this.$v.itemOptions.$invalid : false
-
-      // if (addOnError || optionError) {
-      //   this.errors = true
-      //   if (addOnError) {
-      //     this.$v.itemAddons.$touch()
-      //   } else {
-      //     this.$v.itemOptions.$touch()
-      //   }
-      //   this.$v.itemAddons.$touch()
-      // } else {
-      //   this.errors = false
-      //   this.cartSubmitted = true
-      //   this.$store.commit("addToCart", formOutput)
-      // }
+      let formOutput = {
+        item: this.currentItem.item,
+        count: this.count,
+        options: this.itemOptions,
+        addOns: this.itemAddons,
+        combinedPrice: this.combinedPrice
+      };
+      let addOnError = this.itemAddons.length === 0;
+      let optionError = this.currentItem.options ? this.itemOptions !== "" : false;
+      console.log(3333, addOnError, optionError);
+      if (addOnError || optionError) {
+        this.errors = true
+        // if (addOnError) {
+        //   this.itemAddons.$touch()
+        // } else {
+        //   this.itemOptions.$touch()
+        // }
+        // this.itemAddons.$touch()
+      } else {
+        this.errors = false
+        this.cartSubmitted = true
+        this.$store.commit("addToCart", formOutput)
+      }
     }
   }
 };

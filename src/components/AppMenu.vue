@@ -49,5 +49,22 @@ nav {
       padding-right: 40px;
     }
   }
+  .smallnum {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    color: black;
+    top: 28px;
+    right: 32px;
+    width: 15px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 15px;
+    font-size: 10px;
+    padding: 6px;
+    font-weight: bold;
+  }
 }
 </style>
