@@ -2,7 +2,7 @@
   <main class="container">
     <section
         class="image"
-        :style="`background: url(../../../src/assets/${currentItem.img}) no-repeat center center`">
+        :style="`background: url(/assets/${currentItem.img}) no-repeat center center`">
     </section>
 
     <section class="details">

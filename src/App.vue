@@ -25,7 +25,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-// @import url(./assets/main.scss);
+// @import url(assets/main.scss);
 .content {
   min-height: calc(100vh - 50px);
   width: 100%;
